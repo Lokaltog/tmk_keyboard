@@ -137,4 +137,7 @@ micro: all
 cub: OPT_DEFS += -DKEYMAP_CUB
 cub: all
 
+lokaltog: OPT_DEFS += -DKEYMAP_LOKALTOG
+lokaltog: all
+
 

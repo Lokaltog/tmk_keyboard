@@ -166,6 +166,24 @@ uint8_t matrix_scan(void)
     mcp23018_status = ergodox_left_leds_update();
 #endif
 
+#ifdef KEYMAP_LOKALTOG
+    uint8_t layer = biton32(layer_state);
+
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
+    if(layer == 1) {
+        ergodox_board_led_on();
+    } else if(layer == 2) {
+        ergodox_right_led_1_on();
+    } else if(layer == 3) {
+        ergodox_right_led_2_on();
+    } else if(layer == 4) {
+        ergodox_right_led_3_on();
+    }
+#endif
+
     for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
         select_row(i);
         matrix_row_t cols = read_cols(i);
