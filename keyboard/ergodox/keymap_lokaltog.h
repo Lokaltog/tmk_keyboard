@@ -11,13 +11,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * │ Tab    │ ; : │ , < │ . > │  P  │  Y  │     │        │     │  F  │  G  │  C  │  R  │  L  │  /  ?  │
     * ├────────┼─────┼─────┼─────┼─────┼─────┤     │        │     ├─────┼─────┼─────┼─────┼─────┼────────┤
     * │ LCtrl  │ A Å │ O Ø │ E Æ │ U É │  I  ├─────┤        ├─────┤  D  │  H  │  T  │  N  │  S  │  -  _  │
-    * ├────────┼─────┼─────┼─────┼─────┼─────┤ Del │        │BkSp ├─────┼─────┼─────┼─────┼─────┼────────┤
+    * ├────────┼─────┼─────┼─────┼─────┼─────┤     │        │     ├─────┼─────┼─────┼─────┼─────┼────────┤
     * │ LShift │ " ' │  Q  │  J  │  K  │  X  │     │        │     │  B  │  M  │  W  │  V  │  Z  │  \  |  │
     * └──┬─────┼─────┼─────┼─────┼─────┼─────┴─────┘        └─────┴─────┼─────┼─────┼─────┼─────┼─────┬──┘
-    *    │ Esc │ L2  │ L3  │AltGr│Supr │ ┌─────┬─────┐    ┌─────┬─────┐ │  ←  │  ↓  │  ↑  │  →  │ @ ^ │
-    *    └─────┴─────┴─────┴─────┴─────┘ │Home │End  │    │PgUp │PgDn │ └─────┴─────┴─────┴─────┴─────┘
+    *    │ L1  │ L2  │ L3  │AltGr│Supr │ ┌─────┬─────┐    ┌─────┬─────┐ │BkSp │ Del │ @ ^ │     │ L1  │
+    *    └─────┴─────┴─────┴─────┴─────┘ │PgUp │PgDn │    │Home │End  │ └─────┴─────┴─────┴─────┴─────┘
     *                              ┌─────┼─────┼─────┤    ├─────┼─────┼─────┐
-    *                              │Space│ L1  │     │    │     │Meta │ Ret │
+    *                              │Space│Meta │     │    │     │Esc  │ Ret │
     *                              │     │     ├─────┤    ├─────┤     │     │
     *                              │     │     │     │    │     │     │     │
     *                              └─────┴─────┴─────┘    └─────┴─────┴─────┘
@@ -27,23 +27,23 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         GRV , 1   , 2   , 3   , 4   , 5   , FN23,
         TAB , SCLN, COMM, DOT , P   , Y   , NO  ,
         LCTL, A   , O   , E   , U   , I   ,
-        LSFT, QUOT, Q   , J   , K   , X   , DEL ,
-        ESC , FN21, FN22, RALT, LGUI,
+        LSFT, QUOT, Q   , J   , K   , X   , NO  ,
+        FN20, FN21, FN22, RALT, LGUI,
 
-              HOME, END ,
+              PGUP, PGDN,
                     NO  ,
-        SPC , FN20, NO  ,
+        SPC , LALT, NO  ,
 
         // Right hand
         EQL , 6   , 7   , 8   , 9   , 0   , LBRC,
         NO  , F   , G   , C   , R   , L   , SLSH,
               D   , H   , T   , N   , S   , MINS,
-        BSPC, B   , M   , W   , V   , Z   , BSLS,
-                    LEFT, DOWN, UP  , RGHT, RBRC,
+        NO  , B   , M   , W   , V   , Z   , BSLS,
+                    BSPC, DEL , RBRC, NO  , FN20,
 
-        PGUP, PGDN,
+        HOME, END ,
         NO  ,
-        NO  , LALT, ENT
+        NO  , ESC , ENT
     ),
 
     // Layer 1 - Numpad / F keys / Misc
@@ -53,7 +53,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ├────────┼─────┼─────┼─────┼─────┼─────┼─────┤        ├─────┼─────┼─────┼─────┼─────┼─────┼────────┤
     * │        │Prev │Play │Next │     │     │     │        │     │  /  │  1  │  2  │  3  │  -  │        │
     * ├────────┼─────┼─────┼─────┼─────┼─────┤     │        │     ├─────┼─────┼─────┼─────┼─────┼────────┤
-    * │        │     │     │     │     │     ├─────┤        ├─────┤  *  │  4  │  5  │  6  │  +  │        │
+    * │        │  ←  │  ↓  │  ↑  │  →  │     ├─────┤        ├─────┤  *  │  4  │  5  │  6  │  +  │        │
     * ├────────┼─────┼─────┼─────┼─────┼─────┤     │        │     ├─────┼─────┼─────┼─────┼─────┼────────┤
     * │        │     │     │     │     │     │     │        │     │     │  7  │  8  │  9  │ Ret │        │
     * └──┬─────┼─────┼─────┼─────┼─────┼─────┴─────┘        └─────┴─────┼─────┼─────┼─────┼─────┼─────┬──┘
@@ -69,7 +69,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // Left hand
         FN0 , F1  , F2  , F3  , F4  , F5  , F11 ,
         NO  , MPRV, MPLY, MNXT, NO  , NO  , NO  ,
-        NO  , NO  , NO  , NO  , NO  , NO  ,
+        NO  , LEFT, DOWN, UP  , RGHT, NO  ,
         NO  , NO  , NO  , NO  , NO  , NO  , NO  ,
         TRNS, TRNS, TRNS, TRNS, TRNS,
 
@@ -82,7 +82,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         NO  , PSLS, P7  , P8  , P9  , PMNS, NO  ,
               PAST, P4  , P5  , P6  , PPLS, NO  ,
         NO  , NO  , P1  , P2  , P3  , PENT, NO  ,
-                    P0  , COMM, PDOT, NO  , NO  ,
+                    P0  , COMM, PDOT, TRNS, TRNS,
 
         NO  , NO  ,
         NO  ,
