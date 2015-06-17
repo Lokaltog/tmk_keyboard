@@ -6,7 +6,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
     * ┌────────┬─────┬─────┬─────┬─────┬─────┬─────┐        ┌─────┬─────┬─────┬─────┬─────┬─────┬────────┐
-    * │  $  ~  │  &  │  [  │  {  │  (  │  =  │ L4  │        │ # ` │  +  │  )  │  }  │  ]  │  *  │  !  %  │
+    * │  $  ~  │  &  │  [  │  {  │  (  │  =  │ # ` │        │ L4  │  +  │  )  │  }  │  ]  │  *  │  !  %  │
     * ├────────┼─────┼─────┼─────┼─────┼─────┼─────┤        ├─────┼─────┼─────┼─────┼─────┼─────┼────────┤
     * │ Tab    │ ; : │ , < │ . > │  P  │  Y  │     │        │     │  F  │  G  │  C  │  R  │  L  │  /  ?  │
     * ├────────┼─────┼─────┼─────┼─────┼─────┤     │        │     ├─────┼─────┼─────┼─────┼─────┼────────┤
@@ -19,12 +19,12 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *                              ┌─────┼─────┼─────┤    ├─────┼─────┼─────┐
     *                              │Space│Meta │     │    │     │Esc  │ Ret │
     *                              │     │     ├─────┤    ├─────┤     │     │
-    *                              │     │     │     │    │     │     │     │
+    *                              │     │     │ F5  │    │     │     │     │
     *                              └─────┴─────┴─────┘    └─────┴─────┴─────┘
     */
     KEYMAP(
         // Left hand
-        GRV , 1   , 2   , 3   , 4   , 5   , FN23,
+        GRV , 1   , 2   , 3   , 4   , 5   , EQL ,
         TAB , SCLN, COMM, DOT , P   , Y   , NO  ,
         LCTL, A   , O   , E   , U   , I   ,
         LSFT, QUOT, Q   , J   , K   , X   , NO  ,
@@ -32,10 +32,10 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
               PGUP, PGDN,
                     NO  ,
-        SPC , LALT, NO  ,
+        SPC , LALT, F5  ,
 
         // Right hand
-        EQL , 6   , 7   , 8   , 9   , 0   , LBRC,
+        FN23, 6   , 7   , 8   , 9   , 0   , LBRC,
         NO  , F   , G   , C   , R   , L   , SLSH,
               D   , H   , T   , N   , S   , MINS,
         NO  , B   , M   , W   , V   , Z   , BSLS,
@@ -230,6 +230,8 @@ enum macro_id {
 
 static const uint16_t PROGMEM fn_actions[] = {
     [0] =   ACTION_FUNCTION(F_TEENSY_KEY),                    // FN0  - Teensy key
+
+    [10] =  ACTION_MODS_ONESHOT(MOD_LSFT),
 
     [20] =  ACTION_LAYER_MOMENTARY(1),
     [21] =  ACTION_LAYER_SET(2, ON_PRESS),

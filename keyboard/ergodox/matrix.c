@@ -174,11 +174,13 @@ uint8_t matrix_scan(void)
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     if(layer == 1) {
-        ergodox_board_led_on();
+        ergodox_right_led_1_on();
+        ergodox_right_led_2_on();
+        ergodox_right_led_3_on();
     } else if(layer == 2) {
         ergodox_right_led_1_on();
     } else if(layer == 3) {
-        ergodox_right_led_2_on();
+        ergodox_board_led_on();
     } else if(layer == 4) {
         ergodox_right_led_3_on();
     }

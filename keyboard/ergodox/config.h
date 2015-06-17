@@ -69,7 +69,7 @@ Project located at <https://github.com/benblazak/ergodox-firmware>
     keyboard_report->mods == (MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT)) \
 )
 
-
+#define ONESHOT_TIMEOUT 500
 
 /*
  * Feature disable options
